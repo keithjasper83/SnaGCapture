@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>NSCameraUsageDescription</key>
+    <string>SnaGCapture needs access to your camera to capture photos of construction defects and issues.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>SnaGCapture needs access to your photo library to select images for documentation.</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>SnaGCapture can export snag photos to your photo library for backup purposes.</string>
+</dict>
+</plist>
