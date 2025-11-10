@@ -180,6 +180,7 @@ struct SnagDetailView: View {
         }
         
         modelContext.delete(snag)
+        try? modelContext.save()
     }
     
     private func updateTimestamp() {
