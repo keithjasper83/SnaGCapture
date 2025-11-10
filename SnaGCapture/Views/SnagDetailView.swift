@@ -17,6 +17,8 @@ struct SnagDetailView: View {
     @State private var showingDeleteAlert = false
     @State private var showingPhotoPreview = false
     @State private var selectedPhoto: SnagPhoto?
+    @State private var showingError = false
+    @State private var errorMessage = ""
     
     var body: some View {
         Form {
@@ -126,6 +128,11 @@ struct SnagDetailView: View {
         } message: {
             Text("This will permanently delete this snag and all its photos.")
         }
+        .alert("Error", isPresented: $showingError) {
+            Button("OK") { }
+        } message: {
+            Text(errorMessage)
+        }
         .onChange(of: snag.title) { oldValue, newValue in updateTimestamp() }
         .onChange(of: snag.notes) { oldValue, newValue in updateTimestamp() }
         .onChange(of: snag.location) { oldValue, newValue in updateTimestamp() }
@@ -157,7 +164,8 @@ struct SnagDetailView: View {
             updateTimestamp()
             try modelContext.save()
         } catch {
-            print("Error adding photo: \(error)")
+            errorMessage = "Failed to add photo: \(error.localizedDescription)"
+            showingError = true
         }
     }
     
@@ -169,7 +177,8 @@ struct SnagDetailView: View {
             updateTimestamp()
             try modelContext.save()
         } catch {
-            print("Error deleting photo: \(error)")
+            errorMessage = "Failed to delete photo: \(error.localizedDescription)"
+            showingError = true
         }
     }
     

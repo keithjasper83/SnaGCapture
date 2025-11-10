@@ -10,9 +10,7 @@ let package = Package(
         .macOS(.v14)
     ],
     products: [
-        .library(
-            name: "SnaGCapture",
-            targets: ["SnaGCapture"]),
+        // Note: This package is intended for use with Xcode projects, not as a standalone library
     ],
     targets: [
         .target(
@@ -23,5 +21,9 @@ let package = Package(
             name: "SnaGCaptureTests",
             dependencies: ["SnaGCapture"],
             path: "SnaGCaptureTests"),
+        .testTarget(
+            name: "SnaGCaptureUITests",
+            dependencies: ["SnaGCapture"],
+            path: "SnaGCaptureUITests"),
     ]
 )
