@@ -126,11 +126,11 @@ struct SnagDetailView: View {
         } message: {
             Text("This will permanently delete this snag and all its photos.")
         }
-        .onChange(of: snag.title) { updateTimestamp() }
-        .onChange(of: snag.notes) { updateTimestamp() }
-        .onChange(of: snag.location) { updateTimestamp() }
-        .onChange(of: snag.status) { updateTimestamp() }
-        .onChange(of: snag.priority) { updateTimestamp() }
+        .onChange(of: snag.title) { oldValue, newValue in updateTimestamp() }
+        .onChange(of: snag.notes) { oldValue, newValue in updateTimestamp() }
+        .onChange(of: snag.location) { oldValue, newValue in updateTimestamp() }
+        .onChange(of: snag.status) { oldValue, newValue in updateTimestamp() }
+        .onChange(of: snag.priority) { oldValue, newValue in updateTimestamp() }
     }
     
     private func addPhoto(imageData: Data) {
